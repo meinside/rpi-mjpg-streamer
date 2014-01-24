@@ -1,3 +1,8 @@
+# rpi-mjpg-streamer #
+
+Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.
+
+
 ## A. Setup mjpg-streamer ##
 
 #### install necessary packages for mjpg-streamer ####
@@ -29,6 +34,11 @@ $ sudo vi /etc/modules
 
 # add following line
 bcm2835-v4l2
+
+$ sudo vi /boot/config.txt
+
+# add following line for disabling RPi camera's LED
+disable_camera_led=1
 ```
 
 #### Add yourself to the video group ####
