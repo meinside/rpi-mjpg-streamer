@@ -1,0 +1,4 @@
+run-mjpg-streamer.sh
+init/mjpg-streamer
+
+*.swp
