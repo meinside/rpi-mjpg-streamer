@@ -49,3 +49,4 @@ PLUGIN_OUT="$MJPG_STREAMER_INSTALL/output_http.so -p $MJPG_STREAMER_PORT -w $MJP
 # run mjpg_streamer
 $MJPG_STREAMER -i "$PLUGIN_IN" -o "$PLUGIN_OUT"
 ################
+
