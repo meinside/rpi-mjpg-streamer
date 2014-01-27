@@ -1,0 +1,79 @@
+/*
+ * styles
+ */
+
+#wrap > .container {
+  padding-top: 80px;
+}
+#streaming {
+  margin: 0 auto;
+}
+img.logo {
+  width: 18px;
+}
+
+/*
+	CSS3 transformations: rotate, flip, mirror
+*/
+
+img.x-rotated-0 {}
+img.x-rotated-90 {
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+}
+img.x-rotated-180 {
+	-moz-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+img.x-rotated-270 {
+	-moz-transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);
+}
+img.x-mirrored-rotated-0 {
+	-moz-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+}
+img.x-mirrored-rotated-90 {
+	-moz-transform: rotate(90deg) scaleX(-1);
+	-webkit-transform: rotate(90deg) scaleX(-1);
+}
+img.x-mirrored-rotated-180 {
+	-moz-transform: rotate(180deg) scaleX(-1);
+	-webkit-transform: rotate(180deg) scaleX(-1);
+}
+img.x-mirrored-rotated-270 {
+	-moz-transform: rotate(270deg) scaleX(-1);
+	-webkit-transform: rotate(270deg) scaleX(-1);
+}
+img.x-flipped-rotated-0 {
+	-moz-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+}
+img.x-flipped-rotated-90 {
+	-moz-transform: rotate(90deg) scaleY(-1);
+	-webkit-transform: rotate(90deg) scaleY(-1);
+}
+img.x-flipped-rotated-180 {
+	-moz-transform: rotate(180deg) scaleY(-1);
+	-webkit-transform: rotate(180deg) scaleY(-1);
+}
+img.x-flipped-rotated-270 {
+	-moz-transform: rotate(270deg) scaleY(-1);
+	-webkit-transform: rotate(270deg) scaleY(-1);
+}
+img.x-flipped-mirrored-rotated-0 {
+	-moz-transform: scale(-1,-1);
+	-webkit-transform: scale(-1,-1);
+}
+img.x-flipped-mirrored-rotated-90 {
+	-moz-transform: rotate(90deg) scale(-1,-1);
+	-webkit-transform: rotate(90deg) scale(-1,-1);
+}
+img.x-flipped-mirrored-rotated-180 {
+	-moz-transform: rotate(180deg) scale(-1,-1);
+	-webkit-transform: rotate(180deg) scale(-1,-1);
+}
+img.x-flipped-mirrored-rotated-270 {
+	-moz-transform: rotate(270deg) scale(-1,-1);
+	-webkit-transform: rotate(270deg) scale(-1,-1);
+}
