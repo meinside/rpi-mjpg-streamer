@@ -1,4 +1,6 @@
+# custom files
 run-mjpg-streamer.sh
 init/mjpg-streamer
+www/config.json
 
 *.swp
