@@ -5,6 +5,12 @@ Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.
 
 ## A. Setup mjpg-streamer ##
 
+#### enable raspberry pi camera in raspi-config ####
+
+```
+$ sudo raspi-config
+```
+
 #### install necessary packages for mjpg-streamer ####
 
 ```
