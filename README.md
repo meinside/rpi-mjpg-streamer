@@ -55,22 +55,28 @@ $ sudo usermod -a -G video $USER
 
 ## B. Run mjpg-streamer ##
 
+#### Clone this repository ####
+
+```
+$ git clone https://github.com/meinside/rpi-mjpg-streamer.git
+```
+
 #### Run mjpg-streamer from the shell directly ####
 
 ```
 # copy & edit run-mjpg-streamer.sh to your environment or needs
-$ cp run-mjpg-streamer.sh.sample run-mjpg-streamer.sh
-$ vi run-mjpg-streamer.sh
+$ cp rpi-mjpg-streamer/run-mjpg-streamer.sh.sample somewhere/run-mjpg-streamer.sh
+$ vi somewhere/run-mjpg-streamer.sh
 
 # then run
-$ ./run-mjpg-streamer.sh
+$ somewhere/run-mjpg-streamer.sh
 ```
 
 #### Run mjpg-streamer as a service ####
 
 ```
 # copy & edit init/mjpg-streamer to your environment or needs
-$ sudo cp init/mjpg-streamer.sample /etc/init.d/mjpg-streamer
+$ sudo cp rpi-mjpg-streamer/init/mjpg-streamer.sample /etc/init.d/mjpg-streamer
 $ sudo chmod +x /etc/init.d/mjpg-streamer
 $ sudo vi /etc/init.d/mjpg-streamer
 
