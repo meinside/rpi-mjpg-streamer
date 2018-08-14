@@ -1,67 +1,62 @@
-# rpi-mjpg-streamer #
+# rpi-mjpg-streamer
 
 Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.
 
 
-## A. Setup mjpg-streamer ##
+## A. Setup mjpg-streamer
 
-#### enable raspberry pi camera in raspi-config ####
+### Enable Raspberry Pi Camera module from raspi-config
 
 ```
 $ sudo raspi-config
 ```
 
-#### install necessary packages for mjpg-streamer ####
+### Install necessary packages for mjpg-streamer
 
 ```
 $ sudo apt-get update
-
 $ sudo apt-get install libv4l-dev libjpeg8-dev subversion imagemagick v4l-utils
 ```
 
-#### build mjpg-streamer ####
+### Build mjpg-streamer
 
 ```
 $ svn co https://svn.code.sf.net/p/mjpg-streamer/code/mjpg-streamer/ mjpg-streamer
-
 $ cd mjpg-streamer
-
 $ sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
-
 $ make USE_LIBV4L2=true clean all
 ```
 
-#### (for Raspberry Pi Camera boards) setup video4linux ####
+### Setup video4linux for Raspberry Pi Camera module
 
 ```
 $ sudo modprobe bcm2835-v4l2
-
 $ sudo vi /etc/modules
 
-# add following line
+# add following line:
 bcm2835-v4l2
 
 $ sudo vi /boot/config.txt
 
-# add following line for disabling RPi camera's LED
+# add following line if you want to disable RPi camera's LED:
 disable_camera_led=1
 ```
 
-#### Add yourself to the video group ####
+### Add yourself to the video group
 
 ```
 $ sudo usermod -a -G video $USER
 ```
 
-## B. Run mjpg-streamer ##
+## B. Run mjpg-streamer
 
-#### Clone this repository ####
+### 1. Clone this repository
 
 ```
 $ git clone https://github.com/meinside/rpi-mjpg-streamer.git
 ```
 
-#### Run mjpg-streamer from the shell directly ####
+### 2-a. Run mjpg-streamer from the shell directly
 
 ```
 # copy & edit run-mjpg-streamer.sh to your environment or needs
@@ -72,10 +67,30 @@ $ vi somewhere/run-mjpg-streamer.sh
 $ somewhere/run-mjpg-streamer.sh
 ```
 
-#### Run mjpg-streamer as a service ####
+### 2-b. Or run mjpg-streamer as a service
+
+#### systemd
 
 ```
-# copy & edit init/mjpg-streamer to your environment or needs
+# copy & edit systemd/mjpg-streamer.service file,
+$ sudo cp rpi-mjpg-streamer/systemd/mjpg-streamer.service.sample /lib/systemd/system/mjpg-streamer.service
+$ sudo vi /lib/systemd/system/mjpg-streamer.service
+
+# then register as a service
+$ sudo systemctl enable mjpg-streamer.service
+
+# or remove it
+$ sudo systemctl disable mjpg-streamer.service
+
+# and start/stop it
+$ sudo systemctl start mjpg-streamer.service
+$ sudo systemctl stop mjpg-streamer.service
+```
+
+#### init.d
+
+```
+# copy & edit init/mjpg-streamer file,
 $ sudo cp rpi-mjpg-streamer/init/mjpg-streamer.sample /etc/init.d/mjpg-streamer
 $ sudo chmod +x /etc/init.d/mjpg-streamer
 $ sudo vi /etc/init.d/mjpg-streamer
@@ -98,3 +113,4 @@ Connect through the web browser:
 ![Connected](https://cloud.githubusercontent.com/assets/185988/2740477/3501d5b0-c6d3-11e3-85de-de3ceb302325.png)
 
 Most modern browsers(including mobile browsers like Safari and Chrome) will show the live stream immediately.
+
