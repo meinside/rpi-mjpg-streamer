@@ -15,16 +15,17 @@ $ sudo raspi-config
 
 ```
 $ sudo apt-get update
-$ sudo apt-get install libv4l-dev libjpeg8-dev subversion imagemagick v4l-utils
+$ sudo apt-get install build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl
 ```
 
 ### Build mjpg-streamer
 
 ```
-$ svn co https://svn.code.sf.net/p/mjpg-streamer/code/mjpg-streamer/ mjpg-streamer
-$ cd mjpg-streamer
 $ sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
-$ make USE_LIBV4L2=true clean all
+$ git clone https://github.com/jacksonliam/mjpg-streamer
+$ cd mjpg-streamer/mjpg-streamer-experimental
+$ cmake -DCMAKE_INSTALL_PREFIX:PATH=.. .
+$ make install
 ```
 
 ### Setup video4linux for Raspberry Pi Camera module
@@ -85,25 +86,6 @@ $ sudo systemctl disable mjpg-streamer.service
 # and start/stop it
 $ sudo systemctl start mjpg-streamer.service
 $ sudo systemctl stop mjpg-streamer.service
-```
-
-#### init.d
-
-```
-# copy & edit init/mjpg-streamer file,
-$ sudo cp rpi-mjpg-streamer/init/mjpg-streamer.sample /etc/init.d/mjpg-streamer
-$ sudo chmod +x /etc/init.d/mjpg-streamer
-$ sudo vi /etc/init.d/mjpg-streamer
-
-# then register as a boot-up service
-$ sudo update-rc.d mjpg-streamer defaults
-
-# or remove it
-$ sudo update-rc.d -f mjpg-streamer remove
-
-# and start/stop it
-$ sudo service mjpg-streamer start
-$ sudo service mjpg-streamer stop
 ```
 
 ## C. Connect
