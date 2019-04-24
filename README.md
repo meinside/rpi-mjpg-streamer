@@ -68,7 +68,7 @@ $ vi somewhere/run-mjpg-streamer.sh
 $ somewhere/run-mjpg-streamer.sh
 ```
 
-### 2-b. Or run mjpg-streamer as a service
+### 2-b. Run mjpg-streamer as a service
 
 #### systemd
 
@@ -86,6 +86,34 @@ $ sudo systemctl disable mjpg-streamer.service
 # and start/stop it
 $ sudo systemctl start mjpg-streamer.service
 $ sudo systemctl stop mjpg-streamer.service
+```
+
+### 2-c. Or run with docker
+
+With docker, you don't have to build mjpg-streamer manually.
+
+#### docker-compose
+
+Build with build arguments, (see the argument names and default values in [.env](https://github.com/meinside/rpi-mjpg-streamer/blob/master/.env) file)
+
+```
+# build with the default values
+$ docker-compose build
+
+# or with custom values
+$ docker-compose build --build-arg PORT=9999 --build-arg USERNAME=user PASSWORD=some-password
+```
+
+then run with:
+
+```
+$ docker-compose up -d
+```
+
+If you set custom port number, you should run with that value:
+
+```
+$ PORT=9999 docker-compose up -d
 ```
 
 ## C. Connect
