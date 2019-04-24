@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  streamer:
+    build:
+      context: .
+      args:
+        - PORT=${PORT}
+        - RESOLUTION=${RESOLUTION}
+        - FPS=${FPS}
+        - ANGLE=${ANGLE}
+        - FLIPPED=${FLIPPED}
+        - MIRRORED=${MIRRORED}
+        - USERNAME=${USERNAME}
+        - PASSWORD=${PASSWORD}
+    image: rpi-mjpg-streamer:latest
+    devices:
+      - "/dev/video0:/dev/video0"
+    ports:
+      - "${PORT}:${PORT}"
+    restart: always
+    command: run-mjpg-streamer.docker.sh

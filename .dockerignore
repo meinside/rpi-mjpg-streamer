@@ -1,0 +1,10 @@
+.git
+.gitignore
+README.md
+run-mjpg-streamer.sh.sample
+
+systemd/
+
+Dockerfile
+docker-compose.yaml
+.env
