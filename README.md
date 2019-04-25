@@ -88,7 +88,7 @@ $ sudo systemctl start mjpg-streamer.service
 $ sudo systemctl stop mjpg-streamer.service
 ```
 
-### 2-c. Or run with docker
+### 3. Or run with docker
 
 With docker, you don't have to build mjpg-streamer manually.
 
