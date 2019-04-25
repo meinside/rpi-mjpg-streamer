@@ -92,9 +92,32 @@ $ sudo systemctl stop mjpg-streamer.service
 
 With docker, you don't have to build mjpg-streamer manually.
 
-#### docker-compose
+#### (A) With docker
 
-Build with build arguments, (see the argument names and default values in [.env](https://github.com/meinside/rpi-mjpg-streamer/blob/master/.env) file)
+Build with essential build arguments, (see the argument names and sample values in [.env](https://github.com/meinside/rpi-mjpg-streamer/blob/master/.env) file)
+
+```
+$ docker build -t streamer:latest \
+		--build-arg PORT=9999 \
+		--build-arg RESOLUTION=400x300 \
+		--build-arg FPS=24 \
+		--build-arg ANGLE=0 \
+		--build-arg FLIPPED=false \
+		--build-arg MIRRORED=false \
+		--build-arg USERNAME=user \
+		--build-arg PASSWORD=some-password \
+		.
+```
+
+then run with:
+
+```
+$ docker run -p 9999:9999 --device /dev/video0 -it streamer:latest
+```
+
+#### (B) With docker-compose
+
+Build with optional build arguments, (see the argument names and default values in [.env](https://github.com/meinside/rpi-mjpg-streamer/blob/master/.env) file)
 
 ```
 # build with the default values
