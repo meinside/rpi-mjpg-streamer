@@ -7,20 +7,20 @@ Instructions and helper scripts for running mjpg-streamer on Raspberry Pi.
 
 ### Enable Raspberry Pi Camera module from raspi-config
 
-```
+```bash
 $ sudo raspi-config
 ```
 
 ### Install necessary packages for mjpg-streamer
 
-```
+```bash
 $ sudo apt-get update
 $ sudo apt-get install build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl
 ```
 
 ### Build mjpg-streamer
 
-```
+```bash
 $ sudo ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
 $ git clone https://github.com/jacksonliam/mjpg-streamer
 $ cd mjpg-streamer/mjpg-streamer-experimental
@@ -30,7 +30,7 @@ $ make install
 
 ### Setup video4linux for Raspberry Pi Camera module
 
-```
+```bash
 $ sudo modprobe bcm2835-v4l2
 $ sudo vi /etc/modules
 
@@ -45,7 +45,7 @@ disable_camera_led=1
 
 ### Add yourself to the video group
 
-```
+```bash
 $ sudo usermod -a -G video $USER
 ```
 
@@ -53,13 +53,13 @@ $ sudo usermod -a -G video $USER
 
 ### 1. Clone this repository
 
-```
+```bash
 $ git clone https://github.com/meinside/rpi-mjpg-streamer.git
 ```
 
 ### 2-a. Run mjpg-streamer from the shell directly
 
-```
+```bash
 # copy & edit run-mjpg-streamer.sh to your environment or needs
 $ cp rpi-mjpg-streamer/run-mjpg-streamer.sh.sample somewhere/run-mjpg-streamer.sh
 $ vi somewhere/run-mjpg-streamer.sh
@@ -72,7 +72,7 @@ $ somewhere/run-mjpg-streamer.sh
 
 #### systemd
 
-```
+```bash
 # copy & edit systemd/mjpg-streamer.service file,
 $ sudo cp rpi-mjpg-streamer/systemd/mjpg-streamer.service.sample /lib/systemd/system/mjpg-streamer.service
 $ sudo vi /lib/systemd/system/mjpg-streamer.service
@@ -96,7 +96,7 @@ With docker, you don't have to build mjpg-streamer manually.
 
 Build with essential build arguments, (see the argument names and sample values in [.env](https://github.com/meinside/rpi-mjpg-streamer/blob/master/.env) file)
 
-```
+```bash
 $ docker build -t streamer:latest \
 		--build-arg PORT=9999 \
 		--build-arg RESOLUTION=400x300 \
@@ -111,7 +111,7 @@ $ docker build -t streamer:latest \
 
 then run with:
 
-```
+```bash
 $ docker run -p 9999:9999 --device /dev/video0 -it streamer:latest
 ```
 
@@ -119,7 +119,7 @@ $ docker run -p 9999:9999 --device /dev/video0 -it streamer:latest
 
 Build with optional build arguments, (see the argument names and default values in [.env](https://github.com/meinside/rpi-mjpg-streamer/blob/master/.env) file)
 
-```
+```bash
 # build with the default values
 $ docker-compose build
 
@@ -129,13 +129,13 @@ $ docker-compose build --build-arg PORT=9999 --build-arg USERNAME=user PASSWORD=
 
 then run with:
 
-```
+```bash
 $ docker-compose up -d
 ```
 
 If you set custom port number, you should run with that value:
 
-```
+```bash
 $ PORT=9999 docker-compose up -d
 ```
 
