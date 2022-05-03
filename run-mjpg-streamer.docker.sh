@@ -2,7 +2,7 @@
 #
 # Script for docker
 #
-# created by : meinside@gmail.com
+# created by : meinside@duck.com
 # last update: 2019.04.24.
 #
 
