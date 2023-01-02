@@ -9,7 +9,7 @@ WORKDIR /
 
 # install packages
 RUN apt-get update -y && \
-		apt-get install -y build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl libraspberrypi-bin
+		apt-get install -y build-essential libjpeg-dev imagemagick libv4l-dev git cmake uvcdynctrl libraspberrypi-bin
 
 # build mjpg-streamer
 RUN ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h && \

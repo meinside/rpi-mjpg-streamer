@@ -15,7 +15,7 @@ $ sudo raspi-config
 
 ```bash
 $ sudo apt-get update
-$ sudo apt-get install build-essential libjpeg8-dev imagemagick libv4l-dev git cmake uvcdynctrl
+$ sudo apt-get install build-essential libjpeg-dev imagemagick libv4l-dev git cmake uvcdynctrl
 ```
 
 ### Build mjpg-streamer
