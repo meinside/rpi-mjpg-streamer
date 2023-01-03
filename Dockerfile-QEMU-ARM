@@ -5,6 +5,8 @@ ARG RPI=raspberrypi3
 
 FROM balenalib/$RPI-debian:latest
 
+COPY ./Docker/qemu-arm-* /usr/bin/
+
 WORKDIR /
 
 # install packages
