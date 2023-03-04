@@ -124,7 +124,7 @@ Build with optional build arguments, (see the argument names and default values 
 $ docker-compose build
 
 # or with custom values
-$ docker-compose build --build-arg PORT=9999 --build-arg USERNAME=user PASSWORD=some-password
+$ docker-compose build --build-arg PORT=9999 --build-arg USERNAME=user --build-arg PASSWORD=some-password
 ```
 
 then run with:
